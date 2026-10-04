@@ -1,0 +1,934 @@
+<!DOCTYPE html><html lang="ru"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1216" media="(prefers-color-scheme: dark)">
+<title>Памятка правовых скиллов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{
+  --bg:#F6F7F9;--surface:#FFFFFF;--ink:#16191F;--muted:#525B69;--line:#DCE0E6;--chip:#EEF0F3;
+  --practice:#1F4F9C;--practice-t:#EAF0FA;
+  --doctrine:#A3480B;--doctrine-t:#FBEFE4;
+  --logic:#4A4189;--logic-t:#EFEDF8;
+  --focus:#1F4F9C;--shadow:0 1px 2px rgba(16,24,40,.06);
+  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","PT Sans",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1216;--surface:#171B21;--ink:#E8EBEF;--muted:#A3ABB7;--line:#2A3039;--chip:#222831;
+    --practice:#93B6F2;--practice-t:#17233A;
+    --doctrine:#F2AA70;--doctrine-t:#2D1F14;
+    --logic:#BBB2F5;--logic-t:#211E36;
+    --focus:#93B6F2;--shadow:none;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1216;--surface:#171B21;--ink:#E8EBEF;--muted:#A3ABB7;--line:#2A3039;--chip:#222831;
+  --practice:#93B6F2;--practice-t:#17233A;
+  --doctrine:#F2AA70;--doctrine-t:#2D1F14;
+  --logic:#BBB2F5;--logic-t:#211E36;
+  --focus:#93B6F2;--shadow:none;color-scheme:dark;
+}
+[hidden]{display:none!important}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+@media (min-width:768px){.wrap{padding-left:max(28px,env(safe-area-inset-left));padding-right:max(28px,env(safe-area-inset-right))}}
+
+/* шапка */
+.top{padding-top:20px;padding-bottom:14px}
+.titlerow{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px 16px;margin-bottom:14px}
+h1{margin:0;font-size:clamp(26px,5vw,36px);line-height:1.15;font-weight:700;letter-spacing:-.01em}
+.ver{font-size:13px;color:var(--muted)}
+.search{position:relative}
+.search svg{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search input{width:100%;font:inherit;font-size:16px;min-height:48px;padding:12px 14px 12px 42px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);-webkit-appearance:none;appearance:none}
+.search input::placeholder{color:var(--muted)}
+
+/* вкладки */
+.tabsbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.tablist{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 0;-webkit-overflow-scrolling:touch}
+.tablist::-webkit-scrollbar{display:none}
+.tab{border:0;background:transparent;color:var(--muted);font-size:15px;font-weight:500;padding:10px 14px;min-height:44px;border-radius:10px;white-space:nowrap;cursor:pointer;display:inline-flex;align-items:center;gap:6px;flex:none}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.badge{font-size:12px;line-height:1;padding:3px 7px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.badge.zero{opacity:.6}
+
+main{padding-top:22px;padding-bottom:max(48px,env(safe-area-inset-bottom))}
+.panel[hidden]{display:none}
+h2{font-size:22px;line-height:1.25;margin:0 0 12px;font-weight:600;text-wrap:balance}
+.section{margin-top:32px}
+.lead{color:var(--muted);margin:0 0 18px;max-width:72ch}
+.empty-msg{color:var(--muted);padding:20px 0}
+
+/* фильтры подбора */
+.filters{display:flex;flex-direction:column;gap:14px;margin-bottom:20px}
+.fgroup{display:flex;flex-direction:column;gap:7px}
+.flabel{font-size:13px;font-weight:600;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:14px;padding:8px 13px;min-height:40px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chip.l-practice[aria-pressed="true"]{background:var(--practice);border-color:var(--practice);color:var(--surface)}
+.chip.l-doctrine[aria-pressed="true"]{background:var(--doctrine);border-color:var(--doctrine);color:var(--surface)}
+.chip.l-logic[aria-pressed="true"]{background:var(--logic);border-color:var(--logic);color:var(--surface)}
+@media (pointer:coarse){.chip{min-height:44px}}
+
+/* строки подбора */
+.rows{display:flex;flex-direction:column;gap:14px}
+.row{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
+.row h3{margin:0 0 12px;font-size:18px;line-height:1.3}
+.row h3 small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:2px}
+.cells{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:780px){.cells{grid-template-columns:1fr}}
+.cell{border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cell.l-practice{background:var(--practice-t)}
+.cell.l-doctrine{background:var(--doctrine-t)}
+.cell.l-logic{background:var(--logic-t)}
+.cell.void{background:transparent;border:1px dashed var(--line)}
+.lens{font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+.l-practice .lens,.l-practice .ename{color:var(--practice)}
+.l-doctrine .lens,.l-doctrine .ename{color:var(--doctrine)}
+.l-logic .lens,.l-logic .ename{color:var(--logic)}
+.entry{display:flex;flex-direction:column;gap:6px}
+.entry+.entry{padding-top:10px;border-top:1px solid var(--line)}
+.ename{font-weight:600;font-size:16px;text-decoration:none;align-self:flex-start}
+a.ename:hover{text-decoration:underline}
+.note{font-size:14px;color:var(--muted);margin:0}
+.none{font-size:14px;color:var(--muted);margin:0}
+
+/* фразы с копированием */
+.phrases{display:flex;flex-direction:column;gap:6px}
+.phrase{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;width:100%;text-align:left;font-size:15px;line-height:1.4;padding:8px 10px;min-height:40px;border-radius:8px;border:1px solid var(--line);background:var(--surface);cursor:pointer}
+.phrase:hover{border-color:var(--muted)}
+.phrase svg{flex:none;margin-top:2px;color:var(--muted)}
+@media (pointer:coarse){.phrase{min-height:44px}}
+
+/* карточки */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+@media (max-width:360px){.grid{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);scroll-margin-top:80px;transition:box-shadow .3s}
+.card.flash{box-shadow:0 0 0 3px var(--focus)}
+.chead{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.cname{font-size:19px;font-weight:600;line-height:1.25}
+.l-practice .cname{color:var(--practice)}
+.l-doctrine .cname{color:var(--doctrine)}
+.l-logic .cname{color:var(--logic)}
+.slug{font-family:var(--mono);font-size:13px;color:var(--muted);word-break:break-all}
+.tag{font-family:var(--sans);font-size:12px;padding:1px 7px;border-radius:999px;background:var(--chip);color:var(--muted);margin-left:6px;white-space:nowrap}
+.line{font-size:15px;line-height:1.45;margin:0}
+.line b{font-weight:600}
+.muted{color:var(--muted)}
+.bases{display:flex;flex-wrap:wrap;gap:6px}
+.base{font-size:13px;padding:3px 10px;border-radius:999px}
+.base.l-practice{background:var(--practice-t);color:var(--practice)}
+.base.l-doctrine{background:var(--doctrine-t);color:var(--doctrine)}
+.base.l-logic{background:var(--logic-t);color:var(--logic)}
+.cost{font-size:13px;color:var(--muted);white-space:nowrap}
+.dot{letter-spacing:1px}
+.dot.on{color:var(--ink)}
+.dot.off{color:var(--line)}
+
+/* ловушки */
+.traps{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.trap .tq{font-size:17px;font-weight:600}
+.trap ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+.trap li{font-size:15px}
+.trap li a{font-weight:600;text-decoration:none}
+.trap li a:hover{text-decoration:underline}
+.lk-practice{color:var(--practice)}.lk-doctrine{color:var(--doctrine)}.lk-logic{color:var(--logic)}
+
+/* Глосса */
+.checker{display:flex;flex-direction:column;gap:12px}
+.checkrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.checkrow input{font:inherit;font-size:16px;min-height:48px;width:200px;max-width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);-webkit-appearance:none;appearance:none}
+.result{border-radius:12px;padding:14px 16px;font-size:15px;line-height:1.5;display:flex;flex-direction:column;gap:8px}
+.result.yes{background:var(--doctrine-t)}
+.result.no{background:var(--chip)}
+.result .rt{font-weight:600;font-size:16px}
+.result .acts{display:flex;flex-wrap:wrap;gap:6px}
+.result .acts a{font-size:14px;font-weight:600;text-decoration:none;padding:6px 10px;border-radius:8px;background:var(--surface);border:1px solid var(--line)}
+.vols{display:flex;flex-direction:column}
+.vol{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:11px 10px;border-bottom:1px solid var(--line);border-radius:8px}
+.vol.hit{background:var(--doctrine-t)}
+.vol .vn{font-size:15px;font-weight:500}
+.vol .va{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:2px}
+.vol .vy{font-size:15px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.vol .vy small{display:block;font-size:12px;font-weight:400;color:var(--muted)}
+.missing{background:var(--doctrine-t);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:6px}
+
+/* связки */
+.seq{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.step{font-size:14px;font-weight:600;text-decoration:none;padding:6px 12px;border-radius:8px}
+.step.l-practice{background:var(--practice-t);color:var(--practice)}
+.step.l-doctrine{background:var(--doctrine-t);color:var(--doctrine)}
+.step.l-logic{background:var(--logic-t);color:var(--logic)}
+.op{color:var(--muted);font-weight:600}
+.tips{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.tips li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px}
+.tips b{font-weight:600}
+
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+
+.toast{position:fixed;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:var(--surface);padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.nojs{margin:16px;padding:16px;border-radius:12px;background:var(--doctrine-t)}
+/* статичный вид: файл открыт в предпросмотре без скриптов */
+.static-note{display:none;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--doctrine-t);font-size:14px;line-height:1.45}
+.is-static .static-note{display:block}
+.is-static .search{display:none}
+.is-static a.tab{text-decoration:none}
+.ptitle{font-size:26px;margin:0 0 14px}
+.is-static .panel+.panel{margin-top:44px;padding-top:28px;border-top:1px solid var(--line)}
+span.phrase{cursor:text;-webkit-user-select:text;user-select:text}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+<style id="file-only">:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body class="is-static">
+
+<header class="top">
+  <div class="wrap">
+    <div class="titlerow">
+      <h1>Правовые скиллы</h1>
+      <span class="ver" id="ver">Состояние на 04.10.2026 · Правопоиск 4.0.1 · Правовая логика 0.4.1 · Глосса 0.34.0</span>
+    </div>
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+      <label class="sr" for="q">Поиск по памятке</label>
+      <input id="q" type="search" autocomplete="off" enterkeyhint="search" placeholder="Поиск: слабые места, Пленум, отзыв, округ">
+    </div>
+    <p class="static-note">Это упрощенный вид для предпросмотра: здесь все разделы подряд. Поиск, фильтры, копирование фраз и проверка статьи ГК работают, когда памятка открыта в браузере по ссылке.</p>
+  </div>
+</header>
+
+<nav class="tabsbar" aria-label="Разделы памятки">
+  <div class="wrap"><div class="tablist" id="tablist"><a class="tab" href="#p-pick">Подбор</a><a class="tab" href="#p-skills">Скиллы</a><a class="tab" href="#p-connectors">Коннекторы</a><a class="tab" href="#p-glossa">Глосса</a><a class="tab" href="#p-flows">Связки и лимит</a></div></div>
+</nav>
+
+<main class="wrap" id="main"><section class="panel" id="p-pick"><h2 class="ptitle">Подбор</h2><p class="lead">Найдите строку: что у вас на руках. В ней три ячейки: практика и норма, доктрина, логика. В ячейке скилл и фраза, которой его вызвать.</p><div class="rows"><article class="row" data-row="question" data-text="Вопрос или тема своего текста нет"><h3>Вопрос или тема<small>своего текста нет</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Коннектор напрямую  перечень актов ВС по … найди дело № …"><a href="#c-casus" class="ename">Коннектор напрямую</a><div class="phrases"><span class="phrase">«перечень актов ВС по …»</span><span class="phrase">«найди дело № …»</span></div></div><div class="entry" data-text="Правопоиск  как суды смотрят на … что говорят ВС и наш округ по …"><a href="#s-pravo-poisk" class="ename">Правопоиск</a><div class="phrases"><span class="phrase">«как суды смотрят на …»</span><span class="phrase">«что говорят ВС и наш округ по …»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Глосса напрямую  что пишет Глосса о …"><a href="#c-glossa" class="ename">Глосса напрямую</a><div class="phrases"><span class="phrase">«что пишет Глосса о …»</span></div></div></div><div class="cell l-logic void" data-lens="logic" data-void="1"><div class="lens">Логика</div><p class="none">Не нужен</p></div></div></article><article class="row" data-row="theses" data-text="Тезисы или доводы список или абзацы позиции"><h3>Тезисы или доводы<small>список или абзацы позиции</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Практика под тезисы  подбери практику за и против по тезисам: …"><a href="#s-praktika-pod-tezisy" class="ename">Практика под тезисы</a><div class="phrases"><span class="phrase">«подбери практику за и против по тезисам: …»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Обоснование довода  подкрепи довод по Глоссе что книга скажет против моей позиции"><a href="#s-glossa-obosnovanie-dovoda" class="ename">Обоснование довода</a><div class="phrases"><span class="phrase">«подкрепи довод по Глоссе»</span><span class="phrase">«что книга скажет против моей позиции»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><div class="entry" data-text="Правовая логика  проверь правовую логику сравни позиции истца и ответчика"><a href="#s-pravo-logika" class="ename">Правовая логика</a><div class="phrases"><span class="phrase">«проверь правовую логику»</span><span class="phrase">«сравни позиции истца и ответчика»</span></div></div></div></div></article><article class="row" data-row="document" data-text="Фабула, нужен документ иск, отзыв, жалоба, ходатайство"><h3>Фабула, нужен документ<small>иск, отзыв, жалоба, ходатайство</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Судебный документ  составь отзыв на иск подготовь апелляционную жалобу"><a href="#s-casuslegal-sudebny-dokument" class="ename">Судебный документ</a><div class="phrases"><span class="phrase">«составь отзыв на иск»</span><span class="phrase">«подготовь апелляционную жалобу»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Обоснование довода После черновика. усиль этот абзац доктриной дай сноску для отзыва"><a href="#s-glossa-obosnovanie-dovoda" class="ename">Обоснование довода</a><p class="note">После черновика.</p><div class="phrases"><span class="phrase">«усиль этот абзац доктриной»</span><span class="phrase">«дай сноску для отзыва»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><p class="note entry" data-text="Встроена: Судебный документ сам проверяет черновик логикой.">Встроена: Судебный документ сам проверяет черновик логикой.</p></div></div></article><article class="row" data-row="act" data-text="Судебный акт решение, постановление, определение"><h3>Судебный акт<small>решение, постановление, определение</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Проверка акта  сверь решение с практикой ВС есть ли расхождения с практикой"><a href="#s-proverka-akta" class="ename">Проверка акта</a><div class="phrases"><span class="phrase">«сверь решение с практикой ВС»</span><span class="phrase">«есть ли расхождения с практикой»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Разбор судебного акта  разбери решение по доктрине найди слабые места в решении"><a href="#s-glossa-razbor-sudebnogo-akta" class="ename">Разбор судебного акта</a><div class="phrases"><span class="phrase">«разбери решение по доктрине»</span><span class="phrase">«найди слабые места в решении»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><div class="entry" data-text="Правовая логика  проверь правовую логику решения"><a href="#s-pravo-logika" class="ename">Правовая логика</a><div class="phrases"><span class="phrase">«проверь правовую логику решения»</span></div></div></div></div></article><article class="row" data-row="plenum" data-text="Пленум, обзор, акт КС обобщающий акт высшего суда"><h3>Пленум, обзор, акт КС<small>обобщающий акт высшего суда</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Разбор Пленума  разбери Пленум № … по пунктам из каких дел вырос этот пункт"><a href="#s-casuslegal-razbor" class="ename">Разбор Пленума</a><div class="phrases"><span class="phrase">«разбери Пленум № … по пунктам»</span><span class="phrase">«из каких дел вырос этот пункт»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Глосса напрямую  что Глосса пишет об этом акте"><a href="#c-glossa" class="ename">Глосса напрямую</a><div class="phrases"><span class="phrase">«что Глосса пишет об этом акте»</span></div></div></div><div class="cell l-logic void" data-lens="logic" data-void="1"><div class="lens">Логика</div><p class="none">Не нужен</p></div></div></article><article class="row" data-row="memo" data-text="Записка, позиция по делу служебная записка, меморандум"><h3>Записка, позиция по делу<small>служебная записка, меморандум</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="Правопоиск  проверь позицию по делу с учетом практики нашего округа"><a href="#s-pravo-poisk" class="ename">Правопоиск</a><div class="phrases"><span class="phrase">«проверь позицию по делу с учетом практики нашего округа»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Сверка с доктриной Только темы ГК. сверь записку с доктриной Глоссы"><a href="#s-glossa-sverka-s-doktrinoy" class="ename">Сверка с доктриной</a><p class="note">Только темы ГК.</p><div class="phrases"><span class="phrase">«сверь записку с доктриной Глоссы»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><div class="entry" data-text="Правовая логика В том числе КоАП и ДИ. найди слабые места в записке"><a href="#s-pravo-logika" class="ename">Правовая логика</a><p class="note">В том числе КоАП и ДИ.</p><div class="phrases"><span class="phrase">«найди слабые места в записке»</span></div></div></div></div></article><article class="row" data-row="science" data-text="Научный текст статья, реферат, глава диссертации"><h3>Научный текст<small>статья, реферат, глава диссертации</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><p class="note entry" data-text="Входит в Сверку: практику после даты текста она ищет сама.">Входит в Сверку: практику после даты текста она ищет сама.</p></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Сверка с доктриной  отрецензируй статью есть ли здесь новизна"><a href="#s-glossa-sverka-s-doktrinoy" class="ename">Сверка с доктриной</a><div class="phrases"><span class="phrase">«отрецензируй статью»</span><span class="phrase">«есть ли здесь новизна»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><div class="entry" data-text="Правовая логика  проверь логику аргументации"><a href="#s-pravo-logika" class="ename">Правовая логика</a><div class="phrases"><span class="phrase">«проверь логику аргументации»</span></div></div></div></div></article><article class="row" data-row="norm" data-text="Норма или формулировка статья закона, пункт договора"><h3>Норма или формулировка<small>статья закона, пункт договора</small></h3><div class="cells"><div class="cell l-practice" data-lens="practice"><div class="lens">Практика и норма</div><div class="entry" data-text="К+ напрямую  текст ст. … ГК в действующей редакции"><a href="#c-kplus" class="ename">К+ напрямую</a><div class="phrases"><span class="phrase">«текст ст. … ГК в действующей редакции»</span></div></div><div class="entry" data-text="Правопоиск  норма и практика по ст. … нормоконтроль по норме …"><a href="#s-pravo-poisk" class="ename">Правопоиск</a><div class="phrases"><span class="phrase">«норма и практика по ст. …»</span><span class="phrase">«нормоконтроль по норме …»</span></div></div></div><div class="cell l-doctrine" data-lens="doctrine"><div class="lens">Доктрина</div><div class="entry" data-text="Глосса напрямую  обзор комментария к ст. … ГК"><a href="#c-glossa" class="ename">Глосса напрямую</a><div class="phrases"><span class="phrase">«обзор комментария к ст. … ГК»</span></div></div></div><div class="cell l-logic" data-lens="logic"><div class="lens">Логика</div><div class="entry" data-text="Правовая логика  проверь формулировку на двусмысленность"><a href="#s-pravo-logika" class="ename">Правовая логика</a><div class="phrases"><span class="phrase">«проверь формулировку на двусмысленность»</span></div></div></div></div></article></div><section class="section" id="traps"><h2>Фразы, которые уводят не туда</h2><div class="traps"><div class="card trap" data-text="«Найди слабые места» Назовите, в чем:  в записке Правовая логика в решении Разбор судебного акта в статье Сверка с доктриной"><div class="tq">«Найди слабые места»</div><div class="muted">Назовите, в чем:</div><ul><li>в записке → <a href="#s-pravo-logika" class="lk-logic">Правовая логика</a></li><li>в решении → <a href="#s-glossa-razbor-sudebnogo-akta" class="lk-doctrine">Разбор судебного акта</a></li><li>в статье → <a href="#s-glossa-sverka-s-doktrinoy" class="lk-doctrine">Сверка с доктриной</a></li></ul></div><div class="card trap" data-text="«Проверь решение» Назовите, по чему:  по практике ВС Проверка акта по доктрине Разбор судебного акта по логике Правовая логика"><div class="tq">«Проверь решение»</div><div class="muted">Назовите, по чему:</div><ul><li>по практике ВС → <a href="#s-proverka-akta" class="lk-practice">Проверка акта</a></li><li>по доктрине → <a href="#s-glossa-razbor-sudebnogo-akta" class="lk-doctrine">Разбор судебного акта</a></li><li>по логике → <a href="#s-pravo-logika" class="lk-logic">Правовая логика</a></li></ul></div><div class="card trap" data-text="«Собери справку» Запускает полный режим Правопоиска: контрпрактика, ревью, много поисков. Это дорого. Простой вопрос задавайте без слова «справка»: ответ придет в легком режиме, до четырех вызовов."><div class="tq">«Собери справку»</div><div class="muted">Запускает полный режим Правопоиска: контрпрактика, ревью, много поисков. Это дорого.</div><div>Простой вопрос задавайте без слова «справка»: ответ придет в легком режиме, до четырех вызовов.</div></div></div></section></section><section class="panel" id="p-skills"><h2 class="ptitle">Скиллы</h2><p class="lead">Цвет названия: синий для практики и нормы, оранжевый для доктрины, фиолетовый для логики. Точки: насколько быстро скилл расходует лимит, ориентировочно.</p><div class="grid"><article class="card l-practice" id="s-pravo-poisk" data-text="Правопоиск pravo-poisk Сводит в один ответ практику ВС, ваш округ, норму в действующей редакции, КСОЮ и нормоконтроль, при нужде доктрину. Короткий ответ до четырех вызовов или справка с контрпрактикой и разделом «Что проверить руками». практики за и против, проверки акта, документа, разбора Пленума, рецензии текста. как суды смотрят на … норма и практика по ст. … ГК проверь позицию по делу с учетом практики нашего округа собери правовую справку по … справка позиция риски всо ф02 а19 кс оюз ксою нормоконтроль ВС Округа К+ Глосса"><div class="chead"><h3 class="cname" style="margin:0">Правопоиск</h3><span class="cost" title="Расход лимита: легкий: 1 из 3, справка: 3 из 3">легкий <span class="dot on" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span> · справка <span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="sr">Расход лимита: легкий: 1 из 3, справка: 3 из 3</span></span></div><div class="slug">pravo-poisk<span class="tag">ваш</span></div><p class="line"><b>Делает: </b>Сводит в один ответ практику ВС, ваш округ, норму в действующей редакции, КСОЮ и нормоконтроль, при нужде доктрину.</p><p class="line"><b>На выходе: </b>Короткий ответ до четырех вызовов или справка с контрпрактикой и разделом «Что проверить руками».</p><div class="bases"><span class="base l-practice">ВС</span><span class="base l-practice">Округа</span><span class="base l-practice">К+</span><span class="base l-doctrine">Глосса</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«как суды смотрят на …»</span><span class="phrase">«норма и практика по ст. … ГК»</span><span class="phrase">«проверь позицию по делу с учетом практики нашего округа»</span><span class="phrase">«собери правовую справку по …»</span></div><p class="line muted"><b>Не для: </b>практики за и против, проверки акта, документа, разбора Пленума, рецензии текста.</p></article><article class="card l-practice" id="s-praktika-pod-tezisy" data-text="Практика под тезисы praktika-pod-tezisy По каждому тезису две подборки: подтверждающую и опровергающую, встречным запросом. Акты по иерархии судов с сутью и ссылками; оценка остается за юристом. поиска одного дела, сводной справки, доктрины. подбери практику за и против по тезисам: … есть ли практика, опровергающая это контрпрактика доводы тезисы pro contra ВС СИП КАС округ по просьбе"><div class="chead"><h3 class="cname" style="margin:0">Практика под тезисы</h3><span class="cost" title="Расход лимита: 3 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="sr">Расход лимита: 3 из 3</span></span></div><div class="slug">praktika-pod-tezisy</div><p class="line"><b>Делает: </b>По каждому тезису две подборки: подтверждающую и опровергающую, встречным запросом.</p><p class="line"><b>На выходе: </b>Акты по иерархии судов с сутью и ссылками; оценка остается за юристом.</p><div class="bases"><span class="base l-practice">ВС</span><span class="base l-practice">СИП</span><span class="base l-practice">КАС</span><span class="base l-practice">округ по просьбе</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«подбери практику за и против по тезисам: …»</span><span class="phrase">«есть ли практика, опровергающая это»</span></div><p class="line muted"><b>Не для: </b>поиска одного дела, сводной справки, доктрины.</p></article><article class="card l-practice" id="s-proverka-akta" data-text="Проверка акта proverka-akta Каждый правовой тезис мотивировки сверяет с практикой высших судов. Статус по тезису: подтвержден, расхождение, не охвачен; вес найденного акта. доктринального разбора, жалобы, оценки фактов и доказательств. сверь решение с практикой ВС есть ли расхождения с практикой высших судов решение постановление определение суда проверь решение ВС СИП КАС"><div class="chead"><h3 class="cname" style="margin:0">Проверка акта</h3><span class="cost" title="Расход лимита: 3 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="sr">Расход лимита: 3 из 3</span></span></div><div class="slug">proverka-akta</div><p class="line"><b>Делает: </b>Каждый правовой тезис мотивировки сверяет с практикой высших судов.</p><p class="line"><b>На выходе: </b>Статус по тезису: подтвержден, расхождение, не охвачен; вес найденного акта.</p><div class="bases"><span class="base l-practice">ВС</span><span class="base l-practice">СИП</span><span class="base l-practice">КАС</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«сверь решение с практикой ВС»</span><span class="phrase">«есть ли расхождения с практикой высших судов»</span></div><p class="line muted"><b>Не для: </b>доктринального разбора, жалобы, оценки фактов и доказательств.</p></article><article class="card l-practice" id="s-casuslegal-sudebny-dokument" data-text="Судебный документ casuslegal-sudebny-dokument Иск, отзыв, жалоба, заявление или ходатайство с практикой высших судов. Черновик на согласование, затем DOCX. Логическое ревью встроено. аналитической справки, подбора практики без документа. составь отзыв на иск подготовь апелляционную жалобу на решение составь ходатайство о … иск отзыв жалоба апелляция кассация ходатайство заявление docx ВС СИП КАС"><div class="chead"><h3 class="cname" style="margin:0">Судебный документ</h3><span class="cost" title="Расход лимита: 3 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="sr">Расход лимита: 3 из 3</span></span></div><div class="slug">casuslegal-sudebny-dokument</div><p class="line"><b>Делает: </b>Иск, отзыв, жалоба, заявление или ходатайство с практикой высших судов.</p><p class="line"><b>На выходе: </b>Черновик на согласование, затем DOCX. Логическое ревью встроено.</p><div class="bases"><span class="base l-practice">ВС</span><span class="base l-practice">СИП</span><span class="base l-practice">КАС</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«составь отзыв на иск»</span><span class="phrase">«подготовь апелляционную жалобу на решение»</span><span class="phrase">«составь ходатайство о …»</span></div><p class="line muted"><b>Не для: </b>аналитической справки, подбора практики без документа.</p></article><article class="card l-practice" id="s-casuslegal-razbor" data-text="Разбор Пленума casuslegal-razbor Постатейный разбор Пленума, обзора ВС, постановления КС, обзора СИП. Интерактивный HTML и DOCX; каждый пункт связан с актами-первоисточниками. поиска акта по номеру, разбора одного определения. разбери Пленум № … по пунктам из каких дел вырос этот пункт пленум обзор кс постановление конституционного суда ВС СИП КАС"><div class="chead"><h3 class="cname" style="margin:0">Разбор Пленума</h3><span class="cost" title="Расход лимита: 3 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="sr">Расход лимита: 3 из 3</span></span></div><div class="slug">casuslegal-razbor</div><p class="line"><b>Делает: </b>Постатейный разбор Пленума, обзора ВС, постановления КС, обзора СИП.</p><p class="line"><b>На выходе: </b>Интерактивный HTML и DOCX; каждый пункт связан с актами-первоисточниками.</p><div class="bases"><span class="base l-practice">ВС</span><span class="base l-practice">СИП</span><span class="base l-practice">КАС</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«разбери Пленум № … по пунктам»</span><span class="phrase">«из каких дел вырос этот пункт»</span></div><p class="line muted"><b>Не для: </b>поиска акта по номеру, разбора одного определения.</p></article><article class="card l-logic" id="s-pravo-logika" data-text="Правовая логика pravo-logika Проверяет форму вывода: субсумпцию, толкование, право и факт, однозначность формулировок. Ревью с дефектами и флагами «требует проверки»; правка по просьбе. поиска практики и норм, доктринальной рецензии. проверь правовую логику найди слабые места в записке проверь формулировку на двусмысленность сравни позиции истца и ответчика логика меморандум записка коап ди формулировка договор квалификация толкование слабые места без баз любая отрасль"><div class="chead"><h3 class="cname" style="margin:0">Правовая логика</h3><span class="cost" title="Расход лимита: 1 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="sr">Расход лимита: 1 из 3</span></span></div><div class="slug">pravo-logika<span class="tag">ваш</span></div><p class="line"><b>Делает: </b>Проверяет форму вывода: субсумпцию, толкование, право и факт, однозначность формулировок.</p><p class="line"><b>На выходе: </b>Ревью с дефектами и флагами «требует проверки»; правка по просьбе.</p><div class="bases"><span class="base l-logic">без баз</span><span class="base l-logic">любая отрасль</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«проверь правовую логику»</span><span class="phrase">«найди слабые места в записке»</span><span class="phrase">«проверь формулировку на двусмысленность»</span><span class="phrase">«сравни позиции истца и ответчика»</span></div><p class="line muted"><b>Не для: </b>поиска практики и норм, доктринальной рецензии.</p></article><article class="card l-doctrine" id="s-glossa-obosnovanie-dovoda" data-text="Обоснование довода glossa-obosnovanie-dovoda Подводит под доводы вашего процессуального документа опору из Глоссы: за, оговорки, чем возразит оппонент. Карта по доводам и абзац со сноской на страницу тома. Цена растет с числом доводов. научных текстов, разбора чужого судебного акта. подкрепи довод по Глоссе что книга скажет против моей позиции дай сноску для отзыва карапетов сноска довод доктрина отзыв жалоба Глосса ВС через Глоссу"><div class="chead"><h3 class="cname" style="margin:0">Обоснование довода</h3><span class="cost" title="Расход лимита: 2 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="sr">Расход лимита: 2 из 3</span></span></div><div class="slug">glossa-obosnovanie-dovoda</div><p class="line"><b>Делает: </b>Подводит под доводы вашего процессуального документа опору из Глоссы: за, оговорки, чем возразит оппонент.</p><p class="line"><b>На выходе: </b>Карта по доводам и абзац со сноской на страницу тома. Цена растет с числом доводов.</p><div class="bases"><span class="base l-doctrine">Глосса</span><span class="base l-practice">ВС через Глоссу</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«подкрепи довод по Глоссе»</span><span class="phrase">«что книга скажет против моей позиции»</span><span class="phrase">«дай сноску для отзыва»</span></div><p class="line muted"><b>Не для: </b>научных текстов, разбора чужого судебного акта.</p></article><article class="card l-doctrine" id="s-glossa-razbor-sudebnogo-akta" data-text="Разбор судебного акта glossa-razbor-sudebnogo-akta Каждый тезис мотивировки сверяет с доктриной и обобщающими актами ВС и КС. Где мотивировка не обоснована и какое различение суд не заметил. оценки фактов, прогноза исхода, составления жалобы. разбери решение по доктрине на чем построена мотивировка найди слабые места в решении решение мотивировка доктрина слабые места в решении проверь решение карапетов Глосса ВС через Глоссу"><div class="chead"><h3 class="cname" style="margin:0">Разбор судебного акта</h3><span class="cost" title="Расход лимита: 2 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="sr">Расход лимита: 2 из 3</span></span></div><div class="slug">glossa-razbor-sudebnogo-akta</div><p class="line"><b>Делает: </b>Каждый тезис мотивировки сверяет с доктриной и обобщающими актами ВС и КС.</p><p class="line"><b>На выходе: </b>Где мотивировка не обоснована и какое различение суд не заметил.</p><div class="bases"><span class="base l-doctrine">Глосса</span><span class="base l-practice">ВС через Глоссу</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«разбери решение по доктрине»</span><span class="phrase">«на чем построена мотивировка»</span><span class="phrase">«найди слабые места в решении»</span></div><p class="line muted"><b>Не для: </b>оценки фактов, прогноза исхода, составления жалобы.</p></article><article class="card l-doctrine" id="s-glossa-sverka-s-doktrinoy" data-text="Сверка с доктриной glossa-sverka-s-doktrinoy Рецензирует готовый текст: новизна, пропущенные возражения, реквизиты, практика после текста. Отчет по тезисам с годом каждого тома, на который он опирается. текстов с нуля, подбора практики под позицию, вычитки стиля. отрецензируй статью есть ли здесь новизна что я упустил в статье сверь записку с доктриной Глоссы статья реферат диссертация рецензия новизна научный текст слабые места в статье карапетов Глосса ВС через Глоссу"><div class="chead"><h3 class="cname" style="margin:0">Сверка с доктриной</h3><span class="cost" title="Расход лимита: 2 из 3"><span class="dot on" aria-hidden="true">●</span><span class="dot on" aria-hidden="true">●</span><span class="dot off" aria-hidden="true">●</span><span class="sr">Расход лимита: 2 из 3</span></span></div><div class="slug">glossa-sverka-s-doktrinoy<span class="tag">новый</span></div><p class="line"><b>Делает: </b>Рецензирует готовый текст: новизна, пропущенные возражения, реквизиты, практика после текста.</p><p class="line"><b>На выходе: </b>Отчет по тезисам с годом каждого тома, на который он опирается.</p><div class="bases"><span class="base l-doctrine">Глосса</span><span class="base l-practice">ВС через Глоссу</span></div><div class="flabel">Как вызвать</div><div class="phrases"><span class="phrase">«отрецензируй статью»</span><span class="phrase">«есть ли здесь новизна»</span><span class="phrase">«что я упустил в статье»</span><span class="phrase">«сверь записку с доктриной Глоссы»</span></div><p class="line muted"><b>Не для: </b>текстов с нуля, подбора практики под позицию, вычитки стиля.</p></article></div></section><section class="panel" id="p-connectors"><h2 class="ptitle">Коннекторы</h2><p class="lead">Когда хватает одной базы, скилл не нужен: спросите коннектор напрямую. Это дешевле по лимиту.</p><div class="grid"><article class="card l-practice" id="c-casus" data-text="CasusLegal: высшие суды КС, ВС, ВАС; административные дела ВС; СИП и уголовные, если входят в подписку. перечень актов ВС по … найди дело № … найди термин «…» в практике ВС Один поиск: 60-100 тыс. знаков и около 30 секунд. казус легал верховный суд кс вас"><h3 class="cname" style="margin:0">CasusLegal: высшие суды</h3><p class="line">КС, ВС, ВАС; административные дела ВС; СИП и уголовные, если входят в подписку.</p><div class="flabel">Как спросить</div><div class="phrases"><span class="phrase">«перечень актов ВС по …»</span><span class="phrase">«найди дело № …»</span><span class="phrase">«найди термин «…» в практике ВС»</span></div><p class="line muted">Один поиск: 60-100 тыс. знаков и около 30 секунд.</p></article><article class="card l-practice" id="c-okruga" data-text="CasusLegal: округа Кассация десяти арбитражных округов с 2014 года. Ваш: Восточно-Сибирский, дела А19-…, акты Ф02-…. последние постановления АС Восточно-Сибирского округа по … что за постановление Ф02-… Округ не назван: ищет по всем десяти. казус легал всо ф02 а19 округ кассация арбитраж"><h3 class="cname" style="margin:0">CasusLegal: округа</h3><p class="line">Кассация десяти арбитражных округов с 2014 года. Ваш: Восточно-Сибирский, дела А19-…, акты Ф02-….</p><div class="flabel">Как спросить</div><div class="phrases"><span class="phrase">«последние постановления АС Восточно-Сибирского округа по …»</span><span class="phrase">«что за постановление Ф02-…»</span></div><p class="line muted">Округ не назван: ищет по всем десяти.</p></article><article class="card l-doctrine" id="c-glossa" data-text="Глосса 12 томов комментария к ГК под ред. Карапетова и поиск практики ВС тем же движком, что у CasusLegal. что пишет Глосса о … обзор комментария к ст. … ГК что Глосса пишет об этом акте Вне ГК не поможет. Охват по томам: вкладка «Глосса». глосса карапетов комментарий доктрина"><h3 class="cname" style="margin:0">Глосса</h3><p class="line">12 томов комментария к ГК под ред. Карапетова и поиск практики ВС тем же движком, что у CasusLegal.</p><div class="flabel">Как спросить</div><div class="phrases"><span class="phrase">«что пишет Глосса о …»</span><span class="phrase">«обзор комментария к ст. … ГК»</span><span class="phrase">«что Глосса пишет об этом акте»</span></div><p class="line muted">Вне ГК не поможет. Охват по томам: вкладка «Глосса».</p></article><article class="card l-practice" id="c-kplus" data-text="КонсультантПлюс Нормы в действующей редакции, КСОЮ, апелляции, первая инстанция, нормоконтроль ВС. текст ст. … ГК в действующей редакции Работает через ваш компьютер: приложение Claude должно быть открыто. Одно подключение на подписку. консультант к+ кплюс норма редакция ксою нормоконтроль"><h3 class="cname" style="margin:0">КонсультантПлюс</h3><p class="line">Нормы в действующей редакции, КСОЮ, апелляции, первая инстанция, нормоконтроль ВС.</p><div class="flabel">Как спросить</div><div class="phrases"><span class="phrase">«текст ст. … ГК в действующей редакции»</span></div><p class="line muted">Работает через ваш компьютер: приложение Claude должно быть открыто. Одно подключение на подписку.</p></article></div></section><section class="panel" id="p-glossa"><h2 class="ptitle">Глосса</h2><p class="lead">Скиллы Глоссы работают только там, где есть том. Проверьте статью ГК перед тем, как звать Обоснование довода, Разбор судебного акта или Сверку.</p><p class="lead">Проверка номера статьи ГК работает, когда памятка открыта в браузере. Ниже статьи каждого тома.</p><section class="section"><h2>12 томов Глоссы</h2><div class="vols"><div class="vol" data-text="Основные положения гражданского права 1-16.1"><div><div class="vn">Основные положения гражданского права</div><div class="va">ст. 1-16.1</div></div><div class="vy">2019<small>практика до</small></div></div><div class="vol" data-text="Общие положения о сделке 153-165.1, 181.1-181.5, 190-194"><div><div class="vn">Общие положения о сделке</div><div class="va">ст. 153-165.1, 181.1-181.5, 190-194</div></div><div class="vy">2024<small>практика до</small></div></div><div class="vol" data-text="Недействительность сделки 166-181"><div><div class="vn">Недействительность сделки</div><div class="va">ст. 166-181</div></div><div class="vy">2025<small>практика до</small></div></div><div class="vol" data-text="Представительство и исковая давность 182-189, 195-208"><div><div class="vn">Представительство и исковая давность</div><div class="va">ст. 182-189, 195-208</div></div><div class="vy">2026<small>практика до</small></div></div><div class="vol" data-text="Исполнение и прекращение обязательства 307-328, 407-419"><div><div class="vn">Исполнение и прекращение обязательства</div><div class="va">ст. 307-328, 407-419</div></div><div class="vy">2021<small>практика до</small></div></div><div class="vol" data-text="Обеспечение исполнения обязательств 329, 334-379, 381.1-381.2"><div><div class="vn">Обеспечение исполнения обязательств</div><div class="va">ст. 329, 334-379, 381.1-381.2</div></div><div class="vy">2016<small>практика до</small></div></div><div class="vol" data-text="Перемена лиц и ответственность за нарушение обязательства 330-333, 380-381, 382-406.1"><div><div class="vn">Перемена лиц и ответственность за нарушение обязательства</div><div class="va">ст. 330-333, 380-381, 382-406.1</div></div><div class="vy">2022<small>практика до</small></div></div><div class="vol" data-text="Договорное право: общая часть 420-453"><div><div class="vn">Договорное право: общая часть</div><div class="va">ст. 420-453</div></div><div class="vy">2020<small>практика до</small></div></div><div class="vol" data-text="Купля-продажа, поставка, купля-продажа недвижимости 454-491, 506-524, 549-558"><div><div class="vn">Купля-продажа, поставка, купля-продажа недвижимости</div><div class="va">ст. 454-491, 506-524, 549-558</div></div><div class="vy">2023<small>практика до</small></div></div><div class="vol" data-text="Аренда: общие положения и аренда зданий 606-625, 650-655"><div><div class="vn">Аренда: общие положения и аренда зданий</div><div class="va">ст. 606-625, 650-655</div></div><div class="vy">2023<small>практика до</small></div></div><div class="vol" data-text="Заем, кредит, факторинг, вклад и счет 807-815, 817-860.15"><div><div class="vn">Заем, кредит, факторинг, вклад и счет</div><div class="va">ст. 807-815, 817-860.15</div></div><div class="vy">2018<small>практика до</small></div></div><div class="vol" data-text="Наследственное право 1110-1185, 1224"><div><div class="vn">Наследственное право</div><div class="va">ст. 1110-1185, 1224</div></div><div class="vy">2018<small>практика до</small></div></div></div><p class="note" style="margin-top:10px">«Практика до»: год, по который том видит практику. Состав на 04.10.2026, коннектор 0.34.0.</p></section><section class="section"><div class="missing" data-text="глоссы нет Внутри ГК: граждане и юрлица, вещное право, подряд, услуги, перевозка, страхование, деликты (гл. 59), неосновательное обогащение, интеллектуальные права. Вне ГК: КоАП, налоги, трудовое право. Здесь работают Правопоиск и Правовая логика."><h2 style="margin:0;color:var(--doctrine)">Глоссы нет</h2><p class="line">Внутри ГК: граждане и юрлица, вещное право, подряд, услуги, перевозка, страхование, деликты (гл. 59), неосновательное обогащение, интеллектуальные права.</p><p class="line">Вне ГК: КоАП, налоги, трудовое право. Здесь работают Правопоиск и Правовая логика.</p></div></section></section><section class="panel" id="p-flows"><h2 class="ptitle">Связки и лимит</h2><h2>Связки для составных задач</h2><div class="grid"><article class="card" data-text="Спор по ГК: от справки к документу Сноски на Глоссу добавляются к готовому черновику. Правопоиск Судебный документ Обоснование довода"><h3 style="margin:0;font-size:17px">Спор по ГК: от справки к документу</h3><div class="seq"><a href="#s-pravo-poisk" class="step l-practice">Правопоиск</a><span class="op" aria-hidden="true">→</span><a href="#s-casuslegal-sudebny-dokument" class="step l-practice">Судебный документ</a><span class="op" aria-hidden="true">→</span><a href="#s-glossa-obosnovanie-dovoda" class="step l-doctrine">Обоснование довода</a></div><p class="line muted">Сноски на Глоссу добавляются к готовому черновику.</p></article><article class="card" data-text="Решение суда, готовим жалобу Практика ВС и доктрина отдельно, потом жалоба по найденному. Проверка акта Разбор судебного акта Судебный документ"><h3 style="margin:0;font-size:17px">Решение суда, готовим жалобу</h3><div class="seq"><a href="#s-proverka-akta" class="step l-practice">Проверка акта</a><span class="op" aria-hidden="true">+</span><a href="#s-glossa-razbor-sudebnogo-akta" class="step l-doctrine">Разбор судебного акта</a><span class="op" aria-hidden="true">→</span><a href="#s-casuslegal-sudebny-dokument" class="step l-practice">Судебный документ</a></div><p class="line muted">Практика ВС и доктрина отдельно, потом жалоба по найденному.</p></article><article class="card" data-text="Свой текст по ГК: записка или статья Правопоиск добирает только норму, К+ и округ: практику ВС Сверка уже проверила. Правовая логика Сверка с доктриной Правопоиск"><h3 style="margin:0;font-size:17px">Свой текст по ГК: записка или статья</h3><div class="seq"><a href="#s-pravo-logika" class="step l-logic">Правовая логика</a><span class="op" aria-hidden="true">+</span><a href="#s-glossa-sverka-s-doktrinoy" class="step l-doctrine">Сверка с доктриной</a><span class="op" aria-hidden="true">→</span><a href="#s-pravo-poisk" class="step l-practice">Правопоиск</a></div><p class="line muted">Правопоиск добирает только норму, К+ и округ: практику ВС Сверка уже проверила.</p></article><article class="card" data-text="Тема вне ГК: КоАП, налоги, ДИ Скиллы Глоссы здесь не нужны: тома по этим отраслям нет. Правопоиск Правовая логика"><h3 style="margin:0;font-size:17px">Тема вне ГК: КоАП, налоги, ДИ</h3><div class="seq"><a href="#s-pravo-poisk" class="step l-practice">Правопоиск</a><span class="op" aria-hidden="true">→</span><a href="#s-pravo-logika" class="step l-logic">Правовая логика</a></div><p class="line muted">Скиллы Глоссы здесь не нужны: тома по этим отраслям нет.</p></article></div><section class="section"><h2>Как сберечь лимит</h2><ul class="tips"><li data-text="Одна база: коннектор напрямую, без скилла."><b>Одна база:</b> коннектор напрямую, без скилла.</li><li data-text="Простой вопрос: без слова «справка», тогда Правопоиск ответит в легком режиме."><b>Простой вопрос:</b> без слова «справка», тогда Правопоиск ответит в легком режиме.</li><li data-text="Одна задача = новый чат: длинный чат с полными текстами дорожает с каждым сообщением."><b>Одна задача = новый чат:</b> длинный чат с полными текстами дорожает с каждым сообщением.</li><li data-text="Полные тексты актов: только по 2-3 ключевым, остальное по выдаче поиска."><b>Полные тексты актов:</b> только по 2-3 ключевым, остальное по выдаче поиска.</li><li data-text="Проверка расхода: Settings › Usage, процент до и после задачи."><b>Проверка расхода:</b> Settings › Usage, процент до и после задачи.</li></ul></section></section><footer>Состояние на 04.10.2026 · Правопоиск 4.0.1 · Правовая логика 0.4.1 · Глосса 0.34.0</footer></main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+"use strict";
+
+/* ================= ДАННЫЕ ПАМЯТКИ: правьте здесь ================= */
+
+var META = "Состояние на 04.10.2026 · Правопоиск 4.0.1 · Правовая логика 0.4.1 · Глосса 0.34.0";
+
+var LENS = { practice: "Практика и норма", doctrine: "Доктрина", logic: "Логика" };
+
+/* lens: practice | doctrine | logic; cost: 1..3; mine: свой скилл; fresh: новый */
+var SKILLS = [
+  { id: "pravo-poisk", name: "Правопоиск", lens: "practice", mine: true,
+    cost: [{ label: "легкий", n: 1 }, { label: "справка", n: 3 }],
+    does: "Сводит в один ответ практику ВС, ваш округ, норму в действующей редакции, КСОЮ и нормоконтроль, при нужде доктрину.",
+    out: "Короткий ответ до четырех вызовов или справка с контрпрактикой и разделом «Что проверить руками».",
+    bases: [["ВС", "practice"], ["Округа", "practice"], ["К+", "practice"], ["Глосса", "doctrine"]],
+    notFor: "практики за и против, проверки акта, документа, разбора Пленума, рецензии текста.",
+    say: ["как суды смотрят на …", "норма и практика по ст. … ГК", "проверь позицию по делу с учетом практики нашего округа", "собери правовую справку по …"],
+    kw: "справка позиция риски всо ф02 а19 кс оюз ксою нормоконтроль" },
+  { id: "praktika-pod-tezisy", name: "Практика под тезисы", lens: "practice", cost: 3,
+    does: "По каждому тезису две подборки: подтверждающую и опровергающую, встречным запросом.",
+    out: "Акты по иерархии судов с сутью и ссылками; оценка остается за юристом.",
+    bases: [["ВС", "practice"], ["СИП", "practice"], ["КАС", "practice"], ["округ по просьбе", "practice"]],
+    notFor: "поиска одного дела, сводной справки, доктрины.",
+    say: ["подбери практику за и против по тезисам: …", "есть ли практика, опровергающая это"],
+    kw: "контрпрактика доводы тезисы pro contra" },
+  { id: "proverka-akta", name: "Проверка акта", lens: "practice", cost: 3,
+    does: "Каждый правовой тезис мотивировки сверяет с практикой высших судов.",
+    out: "Статус по тезису: подтвержден, расхождение, не охвачен; вес найденного акта.",
+    bases: [["ВС", "practice"], ["СИП", "practice"], ["КАС", "practice"]],
+    notFor: "доктринального разбора, жалобы, оценки фактов и доказательств.",
+    say: ["сверь решение с практикой ВС", "есть ли расхождения с практикой высших судов"],
+    kw: "решение постановление определение суда проверь решение" },
+  { id: "casuslegal-sudebny-dokument", name: "Судебный документ", lens: "practice", cost: 3,
+    does: "Иск, отзыв, жалоба, заявление или ходатайство с практикой высших судов.",
+    out: "Черновик на согласование, затем DOCX. Логическое ревью встроено.",
+    bases: [["ВС", "practice"], ["СИП", "practice"], ["КАС", "practice"]],
+    notFor: "аналитической справки, подбора практики без документа.",
+    say: ["составь отзыв на иск", "подготовь апелляционную жалобу на решение", "составь ходатайство о …"],
+    kw: "иск отзыв жалоба апелляция кассация ходатайство заявление docx" },
+  { id: "casuslegal-razbor", name: "Разбор Пленума", lens: "practice", cost: 3,
+    does: "Постатейный разбор Пленума, обзора ВС, постановления КС, обзора СИП.",
+    out: "Интерактивный HTML и DOCX; каждый пункт связан с актами-первоисточниками.",
+    bases: [["ВС", "practice"], ["СИП", "practice"], ["КАС", "practice"]],
+    notFor: "поиска акта по номеру, разбора одного определения.",
+    say: ["разбери Пленум № … по пунктам", "из каких дел вырос этот пункт"],
+    kw: "пленум обзор кс постановление конституционного суда" },
+  { id: "pravo-logika", name: "Правовая логика", lens: "logic", mine: true, cost: 1,
+    does: "Проверяет форму вывода: субсумпцию, толкование, право и факт, однозначность формулировок.",
+    out: "Ревью с дефектами и флагами «требует проверки»; правка по просьбе.",
+    bases: [["без баз", "logic"], ["любая отрасль", "logic"]],
+    notFor: "поиска практики и норм, доктринальной рецензии.",
+    say: ["проверь правовую логику", "найди слабые места в записке", "проверь формулировку на двусмысленность", "сравни позиции истца и ответчика"],
+    kw: "логика меморандум записка коап ди формулировка договор квалификация толкование слабые места" },
+  { id: "glossa-obosnovanie-dovoda", name: "Обоснование довода", lens: "doctrine", cost: 2,
+    does: "Подводит под доводы вашего процессуального документа опору из Глоссы: за, оговорки, чем возразит оппонент.",
+    out: "Карта по доводам и абзац со сноской на страницу тома. Цена растет с числом доводов.",
+    bases: [["Глосса", "doctrine"], ["ВС через Глоссу", "practice"]],
+    notFor: "научных текстов, разбора чужого судебного акта.",
+    say: ["подкрепи довод по Глоссе", "что книга скажет против моей позиции", "дай сноску для отзыва"],
+    kw: "карапетов сноска довод доктрина отзыв жалоба" },
+  { id: "glossa-razbor-sudebnogo-akta", name: "Разбор судебного акта", lens: "doctrine", cost: 2,
+    does: "Каждый тезис мотивировки сверяет с доктриной и обобщающими актами ВС и КС.",
+    out: "Где мотивировка не обоснована и какое различение суд не заметил.",
+    bases: [["Глосса", "doctrine"], ["ВС через Глоссу", "practice"]],
+    notFor: "оценки фактов, прогноза исхода, составления жалобы.",
+    say: ["разбери решение по доктрине", "на чем построена мотивировка", "найди слабые места в решении"],
+    kw: "решение мотивировка доктрина слабые места в решении проверь решение карапетов" },
+  { id: "glossa-sverka-s-doktrinoy", name: "Сверка с доктриной", lens: "doctrine", cost: 2, fresh: true,
+    does: "Рецензирует готовый текст: новизна, пропущенные возражения, реквизиты, практика после текста.",
+    out: "Отчет по тезисам с годом каждого тома, на который он опирается.",
+    bases: [["Глосса", "doctrine"], ["ВС через Глоссу", "practice"]],
+    notFor: "текстов с нуля, подбора практики под позицию, вычитки стиля.",
+    say: ["отрецензируй статью", "есть ли здесь новизна", "что я упустил в статье", "сверь записку с доктриной Глоссы"],
+    kw: "статья реферат диссертация рецензия новизна научный текст слабые места в статье карапетов" }
+];
+
+var CONNECTORS = [
+  { id: "casus", name: "CasusLegal: высшие суды", lens: "practice",
+    what: "КС, ВС, ВАС; административные дела ВС; СИП и уголовные, если входят в подписку.",
+    say: ["перечень актов ВС по …", "найди дело № …", "найди термин «…» в практике ВС"],
+    note: "Один поиск: 60-100 тыс. знаков и около 30 секунд.",
+    kw: "казус легал верховный суд кс вас" },
+  { id: "okruga", name: "CasusLegal: округа", lens: "practice",
+    what: "Кассация десяти арбитражных округов с 2014 года. Ваш: Восточно-Сибирский, дела А19-…, акты Ф02-….",
+    say: ["последние постановления АС Восточно-Сибирского округа по …", "что за постановление Ф02-…"],
+    note: "Округ не назван: ищет по всем десяти.",
+    kw: "казус легал всо ф02 а19 округ кассация арбитраж" },
+  { id: "glossa", name: "Глосса", lens: "doctrine",
+    what: "12 томов комментария к ГК под ред. Карапетова и поиск практики ВС тем же движком, что у CasusLegal.",
+    say: ["что пишет Глосса о …", "обзор комментария к ст. … ГК", "что Глосса пишет об этом акте"],
+    note: "Вне ГК не поможет. Охват по томам: вкладка «Глосса».",
+    kw: "глосса карапетов комментарий доктрина" },
+  { id: "kplus", name: "КонсультантПлюс", lens: "practice",
+    what: "Нормы в действующей редакции, КСОЮ, апелляции, первая инстанция, нормоконтроль ВС.",
+    say: ["текст ст. … ГК в действующей редакции"],
+    note: "Работает через ваш компьютер: приложение Claude должно быть открыто. Одно подключение на подписку.",
+    kw: "консультант к+ кплюс норма редакция ксою нормоконтроль" }
+];
+
+/* ref: "s:<id скилла>" или "c:<id коннектора>"; name перекрывает название */
+var ROWS = [
+  { id: "question", title: "Вопрос или тема", sub: "своего текста нет",
+    practice: [{ ref: "c:casus", name: "Коннектор напрямую", say: ["перечень актов ВС по …", "найди дело № …"] },
+               { ref: "s:pravo-poisk", say: ["как суды смотрят на …", "что говорят ВС и наш округ по …"] }],
+    doctrine: [{ ref: "c:glossa", name: "Глосса напрямую", say: ["что пишет Глосса о …"] }],
+    logic: null },
+  { id: "theses", title: "Тезисы или доводы", sub: "список или абзацы позиции",
+    practice: [{ ref: "s:praktika-pod-tezisy", say: ["подбери практику за и против по тезисам: …"] }],
+    doctrine: [{ ref: "s:glossa-obosnovanie-dovoda", say: ["подкрепи довод по Глоссе", "что книга скажет против моей позиции"] }],
+    logic: [{ ref: "s:pravo-logika", say: ["проверь правовую логику", "сравни позиции истца и ответчика"] }] },
+  { id: "document", title: "Фабула, нужен документ", sub: "иск, отзыв, жалоба, ходатайство",
+    practice: [{ ref: "s:casuslegal-sudebny-dokument", say: ["составь отзыв на иск", "подготовь апелляционную жалобу"] }],
+    doctrine: [{ ref: "s:glossa-obosnovanie-dovoda", note: "После черновика.", say: ["усиль этот абзац доктриной", "дай сноску для отзыва"] }],
+    logic: "Встроена: Судебный документ сам проверяет черновик логикой." },
+  { id: "act", title: "Судебный акт", sub: "решение, постановление, определение",
+    practice: [{ ref: "s:proverka-akta", say: ["сверь решение с практикой ВС", "есть ли расхождения с практикой"] }],
+    doctrine: [{ ref: "s:glossa-razbor-sudebnogo-akta", say: ["разбери решение по доктрине", "найди слабые места в решении"] }],
+    logic: [{ ref: "s:pravo-logika", say: ["проверь правовую логику решения"] }] },
+  { id: "plenum", title: "Пленум, обзор, акт КС", sub: "обобщающий акт высшего суда",
+    practice: [{ ref: "s:casuslegal-razbor", say: ["разбери Пленум № … по пунктам", "из каких дел вырос этот пункт"] }],
+    doctrine: [{ ref: "c:glossa", name: "Глосса напрямую", say: ["что Глосса пишет об этом акте"] }],
+    logic: null },
+  { id: "memo", title: "Записка, позиция по делу", sub: "служебная записка, меморандум",
+    practice: [{ ref: "s:pravo-poisk", say: ["проверь позицию по делу с учетом практики нашего округа"] }],
+    doctrine: [{ ref: "s:glossa-sverka-s-doktrinoy", note: "Только темы ГК.", say: ["сверь записку с доктриной Глоссы"] }],
+    logic: [{ ref: "s:pravo-logika", note: "В том числе КоАП и ДИ.", say: ["найди слабые места в записке"] }] },
+  { id: "science", title: "Научный текст", sub: "статья, реферат, глава диссертации",
+    practice: "Входит в Сверку: практику после даты текста она ищет сама.",
+    doctrine: [{ ref: "s:glossa-sverka-s-doktrinoy", say: ["отрецензируй статью", "есть ли здесь новизна"] }],
+    logic: [{ ref: "s:pravo-logika", say: ["проверь логику аргументации"] }] },
+  { id: "norm", title: "Норма или формулировка", sub: "статья закона, пункт договора",
+    practice: [{ ref: "c:kplus", name: "К+ напрямую", say: ["текст ст. … ГК в действующей редакции"] },
+               { ref: "s:pravo-poisk", say: ["норма и практика по ст. …", "нормоконтроль по норме …"] }],
+    doctrine: [{ ref: "c:glossa", name: "Глосса напрямую", say: ["обзор комментария к ст. … ГК"] }],
+    logic: [{ ref: "s:pravo-logika", say: ["проверь формулировку на двусмысленность"] }] }
+];
+
+var TRAPS = [
+  { q: "«Найди слабые места»", lead: "Назовите, в чем:",
+    items: [["в записке", "s:pravo-logika"], ["в решении", "s:glossa-razbor-sudebnogo-akta"], ["в статье", "s:glossa-sverka-s-doktrinoy"]] },
+  { q: "«Проверь решение»", lead: "Назовите, по чему:",
+    items: [["по практике ВС", "s:proverka-akta"], ["по доктрине", "s:glossa-razbor-sudebnogo-akta"], ["по логике", "s:pravo-logika"]] },
+  { q: "«Собери справку»", lead: "Запускает полный режим Правопоиска: контрпрактика, ревью, много поисков. Это дорого.",
+    text: "Простой вопрос задавайте без слова «справка»: ответ придет в легком режиме, до четырех вызовов." }
+];
+
+/* Тома Глоссы: статьи ГК и год, по который том видит практику (glossa_stats, 04.10.2026) */
+var VOLUMES = [
+  { name: "Основные положения гражданского права", arts: "1-16.1", year: 2019 },
+  { name: "Общие положения о сделке", arts: "153-165.1, 181.1-181.5, 190-194", year: 2024 },
+  { name: "Недействительность сделки", arts: "166-181", year: 2025 },
+  { name: "Представительство и исковая давность", arts: "182-189, 195-208", year: 2026 },
+  { name: "Исполнение и прекращение обязательства", arts: "307-328, 407-419", year: 2021 },
+  { name: "Обеспечение исполнения обязательств", arts: "329, 334-379, 381.1-381.2", year: 2016 },
+  { name: "Перемена лиц и ответственность за нарушение обязательства", arts: "330-333, 380-381, 382-406.1", year: 2022 },
+  { name: "Договорное право: общая часть", arts: "420-453", year: 2020 },
+  { name: "Купля-продажа, поставка, купля-продажа недвижимости", arts: "454-491, 506-524, 549-558", year: 2023 },
+  { name: "Аренда: общие положения и аренда зданий", arts: "606-625, 650-655", year: 2023 },
+  { name: "Заем, кредит, факторинг, вклад и счет", arts: "807-815, 817-860.15", year: 2018 },
+  { name: "Наследственное право", arts: "1110-1185, 1224", year: 2018 }
+];
+
+/* Подсказка, к какой части ГК относится статья вне Глоссы (по номеру статьи) */
+var MISSING_HINTS = [
+  [17, 47, "граждане (физические лица)"], [48, 123, "юридические лица"], [124, 127, "публичные образования"],
+  [128, 149, "объекты гражданских прав"], [150, 152, "нематериальные блага"],
+  [209, 306, "право собственности и вещные права"], [492, 505, "розничная купля-продажа"],
+  [525, 548, "поставки для госнужд, контрактация, энергоснабжение"], [559, 566, "продажа предприятия"],
+  [567, 571, "мена"], [572, 582, "дарение"], [583, 605, "рента"],
+  [626, 649, "прокат и аренда транспортных средств"], [656, 670, "аренда предприятий и лизинг"],
+  [671, 688, "наем жилого помещения"], [689, 701, "безвозмездное пользование"], [702, 768, "подряд"],
+  [769, 778, "НИОКР"], [779, 783, "возмездное оказание услуг"], [784, 806, "перевозка и экспедиция"],
+  [816, 816, "облигации"], [861, 885, "расчеты"], [886, 926, "хранение"], [927, 970, "страхование"],
+  [971, 979, "поручение"], [980, 989, "действия в чужом интересе"], [990, 1011, "комиссия и агентирование"],
+  [1012, 1026, "доверительное управление"], [1027, 1040, "коммерческая концессия"],
+  [1041, 1054, "простое товарищество"], [1055, 1063, "публичное обещание награды, конкурс, игры и пари"],
+  [1064, 1101, "обязательства вследствие причинения вреда"], [1102, 1109, "неосновательное обогащение"],
+  [1186, 1223, "международное частное право"], [1225, 1551, "интеллектуальные права"]
+];
+var GK_MAX = 1551;
+
+var MISSING_TEXT = [
+  "Внутри ГК: граждане и юрлица, вещное право, подряд, услуги, перевозка, страхование, деликты (гл. 59), неосновательное обогащение, интеллектуальные права.",
+  "Вне ГК: КоАП, налоги, трудовое право. Здесь работают Правопоиск и Правовая логика."
+];
+
+var FLOWS = [
+  { title: "Спор по ГК: от справки к документу", seq: ["s:pravo-poisk", "→", "s:casuslegal-sudebny-dokument", "→", "s:glossa-obosnovanie-dovoda"],
+    note: "Сноски на Глоссу добавляются к готовому черновику." },
+  { title: "Решение суда, готовим жалобу", seq: ["s:proverka-akta", "+", "s:glossa-razbor-sudebnogo-akta", "→", "s:casuslegal-sudebny-dokument"],
+    note: "Практика ВС и доктрина отдельно, потом жалоба по найденному." },
+  { title: "Свой текст по ГК: записка или статья", seq: ["s:pravo-logika", "+", "s:glossa-sverka-s-doktrinoy", "→", "s:pravo-poisk"],
+    note: "Правопоиск добирает только норму, К+ и округ: практику ВС Сверка уже проверила." },
+  { title: "Тема вне ГК: КоАП, налоги, ДИ", seq: ["s:pravo-poisk", "→", "s:pravo-logika"],
+    note: "Скиллы Глоссы здесь не нужны: тома по этим отраслям нет." }
+];
+
+var TIPS = [
+  ["Одна база:", "коннектор напрямую, без скилла."],
+  ["Простой вопрос:", "без слова «справка», тогда Правопоиск ответит в легком режиме."],
+  ["Одна задача = новый чат:", "длинный чат с полными текстами дорожает с каждым сообщением."],
+  ["Полные тексты актов:", "только по 2-3 ключевым, остальное по выдаче поиска."],
+  ["Проверка расхода:", "Settings › Usage, процент до и после задачи."]
+];
+
+/* ================= /ДАННЫЕ ================= */
+
+var TABS = [
+  { id: "pick", label: "Подбор" },
+  { id: "skills", label: "Скиллы" },
+  { id: "connectors", label: "Коннекторы" },
+  { id: "glossa", label: "Глосса" },
+  { id: "flows", label: "Связки и лимит" }
+];
+
+var SKILL_BY = {}, CONN_BY = {};
+SKILLS.forEach(function (s) { SKILL_BY[s.id] = s; });
+CONNECTORS.forEach(function (c) { CONN_BY[c.id] = c; });
+
+function resolve(ref) {
+  var kind = ref.slice(0, 1), id = ref.slice(2);
+  if (kind === "s" && SKILL_BY[id]) return { item: SKILL_BY[id], href: "#s-" + id, tab: "skills" };
+  if (kind === "c" && CONN_BY[id]) return { item: CONN_BY[id], href: "#c-" + id, tab: "connectors" };
+  return null;
+}
+
+/* ---------- утилиты ---------- */
+function el(tag, attrs, kids) {
+  var n = document.createElement(tag);
+  if (attrs) Object.keys(attrs).forEach(function (k) {
+    var v = attrs[k];
+    if (v === null || v === undefined || v === false) return;
+    if (k === "text") n.textContent = v;
+    else if (k === "cls") n.className = v;
+    else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), v);
+    else n.setAttribute(k, v === true ? "" : v);
+  });
+  (kids || []).forEach(function (c) {
+    if (c === null || c === undefined) return;
+    n.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+  });
+  return n;
+}
+function svg(markup, size) {
+  var w = document.createElement("span");
+  w.innerHTML = '<svg width="' + (size || 16) + '" height="' + (size || 16) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + markup + "</svg>";
+  return w.firstChild;
+}
+var ICON_COPY = '<rect x="9" y="9" width="11" height="11" rx="2"></rect><path d="M5 15V6a2 2 0 0 1 2-2h9"></path>';
+function norm(s) {
+  return String(s || "").toLowerCase().replace(/ё/g, "е").replace(/[«»"“”]/g, "").replace(/\s+/g, " ").trim();
+}
+function matches(text, words) {
+  if (!words.length) return true;
+  var t = norm(text);
+  for (var i = 0; i < words.length; i++) if (t.indexOf(words[i]) === -1) return false;
+  return true;
+}
+
+/* ---------- копирование ---------- */
+var toastEl = document.getElementById("toast"), toastTimer = null;
+function toast(msg) {
+  toastEl.textContent = msg;
+  toastEl.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { toastEl.classList.remove("show"); }, 1600);
+}
+function fallbackCopy(t) {
+  var ta = el("textarea", { readonly: true, style: "position:fixed;top:0;left:0;opacity:0;font-size:16px" });
+  ta.value = t;
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { ta.setSelectionRange(0, t.length); } catch (e) {}
+  var ok = false;
+  try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+  document.body.removeChild(ta);
+  toast(ok ? "Фраза скопирована" : "Не удалось скопировать: выделите текст вручную");
+}
+function copyText(t) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(t).then(function () { toast("Фраза скопирована"); }, function () { fallbackCopy(t); });
+  } else fallbackCopy(t);
+}
+function phraseBtn(p) {
+  return el("button", { type: "button", cls: "phrase", "data-text": p, "aria-label": "Скопировать фразу: " + p,
+    onclick: function () { copyText(p); } }, [el("span", { text: "«" + p + "»" }), svg(ICON_COPY, 16)]);
+}
+
+/* ---------- переходы между вкладками ---------- */
+var tabButtons = {}, panels = {}, current = "pick";
+function activate(id, keepScroll) {
+  if (!panels[id]) id = "pick";
+  current = id;
+  TABS.forEach(function (t) {
+    var on = t.id === id;
+    tabButtons[t.id].setAttribute("aria-selected", on ? "true" : "false");
+    tabButtons[t.id].tabIndex = on ? 0 : -1;
+    panels[t.id].hidden = !on;
+  });
+  try { history.replaceState(null, "", "#" + id); } catch (e) {}
+  if (!keepScroll) {
+    var nav = document.querySelector(".tabsbar");
+    if (window.scrollY > nav.offsetTop) window.scrollTo(0, nav.offsetTop);
+  }
+}
+function goTo(href, tab) {
+  activate(tab, true);
+  var target = document.querySelector(href);
+  if (!target) return;
+  if (target.hidden) { qInput.value = ""; applyFilters(); }
+  requestAnimationFrame(function () {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    target.classList.add("flash");
+    setTimeout(function () { target.classList.remove("flash"); }, 1600);
+  });
+}
+function refLink(ref, label, cls) {
+  var r = resolve(ref);
+  if (!r) return el("span", { text: label || ref });
+  return el("a", { href: r.href, cls: cls || "", text: label || r.item.name,
+    onclick: function (e) { e.preventDefault(); goTo(r.href, r.tab); } });
+}
+
+/* ---------- отрисовка ---------- */
+var main = document.getElementById("main");
+var state = { row: "all", lens: "all" };
+var searchables = { pick: [], skills: [], connectors: [], glossa: [], flows: [] };
+
+function costNode(cost) {
+  var parts = Array.isArray(cost) ? cost : [{ label: "", n: cost }];
+  var wrap = el("span", { cls: "cost" });
+  var desc = [];
+  parts.forEach(function (p, i) {
+    if (i) wrap.appendChild(document.createTextNode(" · "));
+    if (p.label) wrap.appendChild(document.createTextNode(p.label + " "));
+    for (var k = 1; k <= 3; k++) wrap.appendChild(el("span", { cls: "dot " + (k <= p.n ? "on" : "off"), "aria-hidden": "true", text: "●" }));
+    desc.push((p.label ? p.label + ": " : "") + p.n + " из 3");
+  });
+  wrap.setAttribute("title", "Расход лимита: " + desc.join(", "));
+  wrap.appendChild(el("span", { cls: "sr", text: "Расход лимита: " + desc.join(", ") }));
+  return wrap;
+}
+
+function renderPick() {
+  var p = panels.pick;
+  p.appendChild(el("p", { cls: "lead", text: "Выберите, что у вас на руках и что нужно получить. Нажмите на фразу, чтобы скопировать ее и вставить в чат." }));
+
+  var rowChips = el("div", { cls: "chips", role: "group", "aria-label": "Что на руках" });
+  [{ id: "all", title: "Все" }].concat(ROWS).forEach(function (r) {
+    rowChips.appendChild(el("button", { type: "button", cls: "chip", "data-row": r.id, "aria-pressed": r.id === "all" ? "true" : "false", text: r.title,
+      onclick: function () { state.row = r.id; syncChips(); applyFilters(); } }));
+  });
+  var lensChips = el("div", { cls: "chips", role: "group", "aria-label": "Что нужно" });
+  [["all", "Все"], ["practice", LENS.practice], ["doctrine", LENS.doctrine], ["logic", LENS.logic]].forEach(function (l) {
+    lensChips.appendChild(el("button", { type: "button", cls: "chip" + (l[0] !== "all" ? " l-" + l[0] : ""), "data-lens": l[0], "aria-pressed": l[0] === "all" ? "true" : "false", text: l[1],
+      onclick: function () { state.lens = l[0]; syncChips(); applyFilters(); } }));
+  });
+  p.appendChild(el("div", { cls: "filters" }, [
+    el("div", { cls: "fgroup" }, [el("div", { cls: "flabel", text: "Что у вас на руках" }), rowChips]),
+    el("div", { cls: "fgroup" }, [el("div", { cls: "flabel", text: "Что нужно получить" }), lensChips])
+  ]));
+
+  var rows = el("div", { cls: "rows" });
+  ROWS.forEach(function (r) {
+    var cells = el("div", { cls: "cells" });
+    ["practice", "doctrine", "logic"].forEach(function (lens) {
+      var v = r[lens];
+      var cell = el("div", { cls: "cell l-" + lens + (v ? "" : " void"), "data-lens": lens }, [el("div", { cls: "lens", text: LENS[lens] })]);
+      if (!v) {
+        cell.appendChild(el("p", { cls: "none", text: "Не нужен" }));
+        cell.dataset.void = "1";
+      } else if (typeof v === "string") {
+        var n = el("p", { cls: "note entry", text: v });
+        n.dataset.text = v;
+        cell.appendChild(n);
+      } else {
+        v.forEach(function (e) {
+          var res = resolve(e.ref);
+          var name = e.name || (res ? res.item.name : e.ref);
+          var entry = el("div", { cls: "entry" }, [refLink(e.ref, name, "ename")]);
+          if (e.note) entry.appendChild(el("p", { cls: "note", text: e.note }));
+          var ph = el("div", { cls: "phrases" });
+          (e.say || []).forEach(function (s) { ph.appendChild(phraseBtn(s)); });
+          entry.appendChild(ph);
+          entry.dataset.text = [name, e.note, (e.say || []).join(" ")].join(" ");
+          cell.appendChild(entry);
+        });
+      }
+      cells.appendChild(cell);
+    });
+    var row = el("article", { cls: "row", "data-row": r.id }, [
+      el("h3", null, [r.title, el("small", { text: r.sub })]), cells
+    ]);
+    row.dataset.text = r.title + " " + r.sub;
+    rows.appendChild(row);
+  });
+  p.appendChild(rows);
+  p.appendChild(el("p", { cls: "empty-msg", hidden: true, "data-empty": "pick", text: "Ничего не нашлось. Попробуйте другое слово или снимите фильтр." }));
+
+  var traps = el("div", { cls: "traps" });
+  TRAPS.forEach(function (t) {
+    var card = el("div", { cls: "card trap" }, [el("div", { cls: "tq", text: t.q }), el("div", { cls: "muted", text: t.lead })]);
+    var txt = t.q + " " + t.lead + " " + (t.text || "");
+    if (t.items) {
+      var ul = el("ul");
+      t.items.forEach(function (it) {
+        var res = resolve(it[1]);
+        ul.appendChild(el("li", null, [it[0] + " → ", refLink(it[1], null, "lk-" + (res ? res.item.lens : "practice"))]));
+        txt += " " + it[0] + " " + (res ? res.item.name : "");
+      });
+      card.appendChild(ul);
+    }
+    if (t.text) card.appendChild(el("div", { text: t.text }));
+    card.dataset.text = txt;
+    traps.appendChild(card);
+    searchables.pick.push(card);
+  });
+  p.appendChild(el("section", { cls: "section", id: "traps" }, [el("h2", { text: "Фразы, которые уводят не туда" }), traps]));
+}
+
+function syncChips() {
+  panels.pick.querySelectorAll("[data-row].chip").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.row === state.row ? "true" : "false"); });
+  panels.pick.querySelectorAll("[data-lens].chip").forEach(function (b) { b.setAttribute("aria-pressed", b.dataset.lens === state.lens ? "true" : "false"); });
+}
+
+function renderSkills() {
+  var p = panels.skills;
+  p.appendChild(el("p", { cls: "lead", text: "Цвет названия: синий для практики и нормы, оранжевый для доктрины, фиолетовый для логики. Точки: насколько быстро скилл расходует лимит, ориентировочно." }));
+  var grid = el("div", { cls: "grid" });
+  SKILLS.forEach(function (s) {
+    var slug = el("div", { cls: "slug", text: s.id }, [s.mine ? el("span", { cls: "tag", text: "ваш" }) : null, s.fresh ? el("span", { cls: "tag", text: "новый" }) : null]);
+    var bases = el("div", { cls: "bases" });
+    s.bases.forEach(function (b) { bases.appendChild(el("span", { cls: "base l-" + b[1], text: b[0] })); });
+    var ph = el("div", { cls: "phrases" });
+    s.say.forEach(function (x) { ph.appendChild(phraseBtn(x)); });
+    var card = el("article", { cls: "card l-" + s.lens, id: "s-" + s.id }, [
+      el("div", { cls: "chead" }, [el("h3", { cls: "cname", style: "margin:0", text: s.name }), costNode(s.cost)]),
+      slug,
+      el("p", { cls: "line" }, [el("b", { text: "Делает: " }), s.does]),
+      el("p", { cls: "line" }, [el("b", { text: "На выходе: " }), s.out]),
+      bases,
+      el("div", { cls: "flabel", text: "Как вызвать" }), ph,
+      el("p", { cls: "line muted" }, [el("b", { text: "Не для: " }), s.notFor])
+    ]);
+    card.dataset.text = [s.name, s.id, s.does, s.out, s.notFor, s.say.join(" "), s.kw, s.bases.map(function (b) { return b[0]; }).join(" ")].join(" ");
+    grid.appendChild(card);
+    searchables.skills.push(card);
+  });
+  p.appendChild(grid);
+  p.appendChild(el("p", { cls: "empty-msg", hidden: true, "data-empty": "skills", text: "Ничего не нашлось." }));
+}
+
+function renderConnectors() {
+  var p = panels.connectors;
+  p.appendChild(el("p", { cls: "lead", text: "Когда хватает одной базы, скилл не нужен: спросите коннектор напрямую. Это дешевле по лимиту." }));
+  var grid = el("div", { cls: "grid" });
+  CONNECTORS.forEach(function (c) {
+    var ph = el("div", { cls: "phrases" });
+    c.say.forEach(function (x) { ph.appendChild(phraseBtn(x)); });
+    var card = el("article", { cls: "card l-" + c.lens, id: "c-" + c.id }, [
+      el("h3", { cls: "cname", style: "margin:0", text: c.name }),
+      el("p", { cls: "line", text: c.what }),
+      el("div", { cls: "flabel", text: "Как спросить" }), ph,
+      el("p", { cls: "line muted", text: c.note })
+    ]);
+    card.dataset.text = [c.name, c.what, c.say.join(" "), c.note, c.kw].join(" ");
+    grid.appendChild(card);
+    searchables.connectors.push(card);
+  });
+  p.appendChild(grid);
+  p.appendChild(el("p", { cls: "empty-msg", hidden: true, "data-empty": "connectors", text: "Ничего не нашлось." }));
+}
+
+/* ---------- Глосса: проверка статьи ---------- */
+function parseArt(str) {
+  var m = String(str).match(/(\d+)(?:[.,](\d+))?/);
+  if (!m) return null;
+  return [parseInt(m[1], 10), m[2] ? parseInt(m[2], 10) : 0];
+}
+function cmp(a, b) { return a[0] - b[0] || a[1] - b[1]; }
+VOLUMES.forEach(function (v) {
+  v.ranges = v.arts.split(",").map(function (part) {
+    var ab = part.trim().split("-");
+    var a = parseArt(ab[0]), b = parseArt(ab[1] || ab[0]);
+    return [a, b];
+  });
+});
+function findVolume(art) {
+  for (var i = 0; i < VOLUMES.length; i++) {
+    var v = VOLUMES[i];
+    for (var j = 0; j < v.ranges.length; j++) {
+      if (cmp(art, v.ranges[j][0]) >= 0 && cmp(art, v.ranges[j][1]) <= 0) return v;
+    }
+  }
+  return null;
+}
+function hintFor(art) {
+  for (var i = 0; i < MISSING_HINTS.length; i++) {
+    var h = MISSING_HINTS[i];
+    if (art[0] >= h[0] && art[0] <= h[1]) return h[2];
+  }
+  return null;
+}
+
+function renderGlossa() {
+  var p = panels.glossa;
+  p.appendChild(el("p", { cls: "lead", text: "Скиллы Глоссы работают только там, где есть том. Проверьте статью ГК перед тем, как звать Обоснование довода, Разбор судебного акта или Сверку." }));
+
+  var input = el("input", { id: "art", type: "text", inputmode: "decimal", autocomplete: "off", placeholder: "Номер статьи ГК", "aria-label": "Номер статьи ГК" });
+  var result = el("div", { id: "artres", "aria-live": "polite" });
+  var volNodes = [];
+
+  function check() {
+    var raw = input.value.trim();
+    result.innerHTML = "";
+    result.className = "";
+    volNodes.forEach(function (n) { n.el.classList.remove("hit"); });
+    if (!raw) return;
+    var art = parseArt(raw);
+    if (!art) { result.className = "result no"; result.appendChild(el("div", { text: "Введите номер статьи цифрами, например 333 или 381.1." })); return; }
+    var label = "Ст. " + art[0] + (art[1] ? "." + art[1] : "") + " ГК";
+    if (art[0] < 1 || art[0] > GK_MAX) { result.className = "result no"; result.appendChild(el("div", { text: "В ГК нет статьи с таким номером." })); return; }
+    var v = findVolume(art);
+    if (v) {
+      result.className = "result yes";
+      result.appendChild(el("div", { cls: "rt", text: label + ": есть в Глоссе" }));
+      result.appendChild(el("div", { text: "Том «" + v.name + "», ст. " + v.arts + ". Практику том видит по " + v.year + " год, более позднюю скиллы Глоссы добирают живым поиском." }));
+      var acts = el("div", { cls: "acts" }, [
+        refLink("s:glossa-obosnovanie-dovoda", null, "lk-doctrine"), refLink("s:glossa-razbor-sudebnogo-akta", null, "lk-doctrine"),
+        refLink("s:glossa-sverka-s-doktrinoy", null, "lk-doctrine"), refLink("c:glossa", "Глосса напрямую", "lk-doctrine")
+      ]);
+      result.appendChild(acts);
+      volNodes.forEach(function (n) { if (n.v === v) n.el.classList.add("hit"); });
+    } else {
+      var h = hintFor(art);
+      result.className = "result no";
+      result.appendChild(el("div", { cls: "rt", text: label + ": в Глоссе нет" }));
+      result.appendChild(el("div", { text: (h ? "Это " + h + ": тома по этой части ГК в Глоссе нет. " : "Комментарий к этой статье в Глоссу не входит. ") + "Работают Правопоиск, коннекторы практики и Правовая логика." }));
+      result.appendChild(el("div", { cls: "acts" }, [refLink("s:pravo-poisk", null, "lk-practice"), refLink("c:casus", "CasusLegal напрямую", "lk-practice"), refLink("s:pravo-logika", null, "lk-logic")]));
+    }
+  }
+  input.addEventListener("input", check);
+
+  var examples = el("div", { cls: "chips", role: "group", "aria-label": "Примеры" });
+  ["333", "421", "450.1", "1064", "702"].forEach(function (x) {
+    examples.appendChild(el("button", { type: "button", cls: "chip", text: "ст. " + x, onclick: function () { input.value = x; check(); input.focus(); } }));
+  });
+
+  p.appendChild(el("div", { cls: "card checker" }, [
+    el("h2", { style: "margin:0", text: "Есть ли статья в Глоссе" }),
+    el("div", { cls: "checkrow" }, [input]),
+    examples,
+    result
+  ]));
+
+  var vols = el("div", { cls: "vols" });
+  VOLUMES.forEach(function (v) {
+    var node = el("div", { cls: "vol" }, [
+      el("div", null, [el("div", { cls: "vn", text: v.name }), el("div", { cls: "va", text: "ст. " + v.arts })]),
+      el("div", { cls: "vy" }, [String(v.year), el("small", { text: "практика до" })])
+    ]);
+    node.dataset.text = v.name + " " + v.arts;
+    volNodes.push({ v: v, el: node });
+    vols.appendChild(node);
+    searchables.glossa.push(node);
+  });
+  p.appendChild(el("section", { cls: "section" }, [
+    el("h2", { text: "12 томов Глоссы" }), vols,
+    el("p", { cls: "note", style: "margin-top:10px", text: "«Практика до»: год, по который том видит практику. Состав на 04.10.2026, коннектор 0.34.0." })
+  ]));
+  p.appendChild(el("p", { cls: "empty-msg", hidden: true, "data-empty": "glossa", text: "Среди томов ничего не нашлось. Номер статьи проверьте полем выше." }));
+
+  var miss = el("div", { cls: "missing" }, [el("h2", { style: "margin:0;color:var(--doctrine)", text: "Глоссы нет" })]);
+  MISSING_TEXT.forEach(function (t) { miss.appendChild(el("p", { cls: "line", text: t })); });
+  miss.dataset.text = "глоссы нет " + MISSING_TEXT.join(" ");
+  searchables.glossa.push(miss);
+  p.appendChild(el("section", { cls: "section" }, [miss]));
+}
+
+function renderFlows() {
+  var p = panels.flows;
+  p.appendChild(el("h2", { text: "Связки для составных задач" }));
+  var grid = el("div", { cls: "grid" });
+  FLOWS.forEach(function (f) {
+    var seq = el("div", { cls: "seq" });
+    var txt = f.title + " " + f.note;
+    f.seq.forEach(function (x) {
+      if (x === "→" || x === "+") { seq.appendChild(el("span", { cls: "op", "aria-hidden": "true", text: x })); return; }
+      var r = resolve(x);
+      seq.appendChild(refLink(x, null, "step l-" + (r ? r.item.lens : "practice")));
+      txt += " " + (r ? r.item.name : "");
+    });
+    var card = el("article", { cls: "card" }, [el("h3", { style: "margin:0;font-size:17px", text: f.title }), seq, el("p", { cls: "line muted", text: f.note })]);
+    card.dataset.text = txt;
+    grid.appendChild(card);
+    searchables.flows.push(card);
+  });
+  p.appendChild(grid);
+
+  var ul = el("ul", { cls: "tips" });
+  TIPS.forEach(function (t) {
+    var li = el("li", null, [el("b", { text: t[0] }), " " + t[1]]);
+    li.dataset.text = t[0] + " " + t[1];
+    ul.appendChild(li);
+    searchables.flows.push(li);
+  });
+  p.appendChild(el("section", { cls: "section" }, [el("h2", { text: "Как сберечь лимит" }), ul]));
+  p.appendChild(el("p", { cls: "empty-msg", hidden: true, "data-empty": "flows", text: "Ничего не нашлось." }));
+}
+
+/* ---------- поиск и фильтры ---------- */
+var qInput = document.getElementById("q");
+var badges = {};
+
+function applyFilters() {
+  var words = norm(qInput.value).split(" ").filter(Boolean);
+  var searching = words.length > 0;
+  var counts = { pick: 0, skills: 0, connectors: 0, glossa: 0, flows: 0 };
+
+  panels.pick.querySelectorAll(".row").forEach(function (row) {
+    var rowOk = state.row === "all" || row.dataset.row === state.row;
+    var titleHit = searching && matches(row.dataset.text, words);
+    var anyCell = false;
+    row.querySelectorAll(".cell").forEach(function (cell) {
+      var lensOk = state.lens === "all" || cell.dataset.lens === state.lens;
+      var entries = cell.querySelectorAll(".entry");
+      var hits = 0;
+      entries.forEach(function (e) {
+        var ok = !searching || titleHit || matches(e.dataset.text, words);
+        e.hidden = !ok;
+        if (ok) hits++;
+      });
+      var show = lensOk && (cell.dataset.void ? !searching : (!searching || hits > 0));
+      cell.hidden = !show;
+      if (show) { anyCell = true; if (rowOk) counts.pick += searching ? hits : 0; }
+    });
+    row.hidden = !(rowOk && anyCell);
+  });
+  searchables.pick.forEach(function (n) { var ok = matches(n.dataset.text, words); n.hidden = !ok; if (ok && searching) counts.pick++; });
+  var trapsSec = document.getElementById("traps");
+  trapsSec.hidden = searching && !searchables.pick.some(function (n) { return !n.hidden; });
+
+  ["skills", "connectors", "glossa", "flows"].forEach(function (k) {
+    searchables[k].forEach(function (n) { var ok = matches(n.dataset.text, words); n.hidden = !ok; if (ok) counts[k]++; });
+    panels[k].querySelectorAll(".section").forEach(function (sec) {
+      var inner = searchables[k].filter(function (n) { return sec.contains(n); });
+      if (inner.length) sec.hidden = !inner.some(function (n) { return !n.hidden; });
+    });
+  });
+
+  var visibleRows = Array.prototype.some.call(panels.pick.querySelectorAll(".row"), function (r) { return !r.hidden; });
+  panels.pick.querySelector('[data-empty="pick"]').hidden = visibleRows || (searching && counts.pick > 0);
+  ["skills", "connectors", "glossa", "flows"].forEach(function (k) {
+    var m = panels[k].querySelector('[data-empty="' + k + '"]');
+    if (m) m.hidden = !searching || counts[k] > 0;
+  });
+
+  TABS.forEach(function (t) {
+    var b = badges[t.id];
+    b.hidden = !searching;
+    b.textContent = counts[t.id];
+    b.classList.toggle("zero", counts[t.id] === 0);
+  });
+}
+
+/* ---------- сборка ---------- */
+document.getElementById("ver").textContent = META;
+var tablist = document.getElementById("tablist");
+if (document.body.classList.contains("is-static")) {
+  main.innerHTML = "";
+  tablist.innerHTML = "";
+  document.body.classList.remove("is-static");
+}
+TABS.forEach(function (t, i) {
+  var badge = el("span", { cls: "badge", hidden: true, "aria-hidden": "true" });
+  badges[t.id] = badge;
+  var b = el("button", { type: "button", cls: "tab", role: "tab", id: "t-" + t.id, "aria-controls": "p-" + t.id, "aria-selected": "false",
+    onclick: function () { activate(t.id); } }, [t.label, badge]);
+  b.addEventListener("keydown", function (e) {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    var n = (i + (e.key === "ArrowRight" ? 1 : TABS.length - 1)) % TABS.length;
+    activate(TABS[n].id); tabButtons[TABS[n].id].focus();
+  });
+  tabButtons[t.id] = b;
+  tablist.appendChild(b);
+  var panel = el("section", { cls: "panel", id: "p-" + t.id, role: "tabpanel", "aria-labelledby": "t-" + t.id, hidden: true });
+  panels[t.id] = panel;
+  main.appendChild(panel);
+});
+
+renderPick();
+renderSkills();
+renderConnectors();
+renderGlossa();
+renderFlows();
+main.appendChild(el("footer", { text: META }));
+
+qInput.addEventListener("input", applyFilters);
+qInput.addEventListener("keydown", function (e) { if (e.key === "Escape") { qInput.value = ""; applyFilters(); } });
+
+var start = (location.hash || "").replace("#", "");
+activate(panels[start] ? start : "pick", true);
+applyFilters();
+})();
+</script>
+
+
+</body></html>
